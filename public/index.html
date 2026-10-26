@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">R</span> Resume Studio</div>
+    <div class="toolbar">
+      <label class="field">Theme
+        <select id="theme"></select>
+      </label>
+      <label class="field color" title="Accent color">
+        <input type="color" id="accent" />
+      </label>
+      <button id="undo" class="ghost" title="Undo last change (Ctrl+Z)">↶ Undo</button>
+      <button id="reset" class="ghost" title="Start a new resume">New</button>
+      <span class="sep"></span>
+      <button id="dl-docx" class="secondary" title="Word format — also opens in Google Docs via File › Open">⬇ .docx</button>
+      <button id="gdoc" class="primary">Save to Google Docs</button>
+    </div>
+  </header>
+
+  <main class="split">
+    <section class="chat-pane" aria-label="Chat">
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <div id="chips" class="chips"></div>
+      <form id="composer" class="composer">
+        <textarea id="input" rows="3" placeholder="Tell me about your experience, paste your current resume, or paste a job description…"></textarea>
+        <div class="composer-row">
+          <span class="hint">Enter to send · Shift+Enter for new line</span>
+          <button type="button" id="stop" class="ghost hidden">■ Stop</button>
+          <button type="submit" id="send" class="primary">Send</button>
+        </div>
+      </form>
+    </section>
+
+    <div class="divider" id="divider" title="Drag to resize"></div>
+
+    <section class="preview-pane" aria-label="Resume preview">
+      <div class="preview-bar">
+        <span>Live preview</span>
+        <div class="meter" title="Completeness"><div id="meter-fill"></div></div>
+        <span id="meter-label">0%</span>
+      </div>
+      <div class="preview-scroll">
+        <article id="page" class="page"></article>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
